@@ -1,0 +1,51 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "html",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "markdown",
+    "reason",
+    "scss"
+  ],
+  "coc.preferences.hoverTarget": "preview",
+  "css.validate": false,
+  "diagnostic.refreshOnInsertMode": false,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.file.autoReveal": true,
+  "explorer.quitOnOpen": true,
+  "explorer.width": 50,
+  "explorer.toggle": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.autoFix": true,
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue"
+  ],
+  "eslint.packageManager": "yarn",
+  "javascript.suggestionActions.enabled": false,
+  "languageserver": {
+    "reason": {
+      "command": "reason-language-server",
+      "filetypes": ["reason"]
+    }
+  },
+  "less.validate": false,
+  "prettier.requireConfig": true,
+  "scss.validate": false,
+  "stylelintplus.autoFixOnSave": true,
+  "suggest.snippetIndicator": " ",
+  "suggest.noselect": true,
+  "suggest.triggerAfterInsertEnter": true,
+  "tsserver.enable": true,
+  "tsserver.log": "verbose",
+  "tsserver.npm": "/home/chuck/.nvm/versions/node/v10.15.0/bin/npm",
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.suggest.autoImports": true,
+  "vetur.experimental.templateInterpolationService": false,
+  "wxss.validate": false
+}
