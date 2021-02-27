@@ -1,0 +1,12 @@
+session_name: David Yurman Stacker
+windows: 
+- window_name: Development
+  layout: 1a10,491x67,0,0{384x67,0,0,0,106x67,385,0,1}
+  panes:
+    - shell_command:
+      - cd $HOME/Projects/smithco/site-redesign/
+      - nvim
+      focus: true
+    - shell_command:
+      - cd $HOME/Projects/smithco/site-redesign/
+      - nvm use 8.11.1 && npm run web:abs -- --env.aem_server STG4_PUBLIC
