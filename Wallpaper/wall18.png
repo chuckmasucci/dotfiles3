@@ -1,0 +1,10 @@
+#!/bin/bash
+i=$1
+
+for filename in ./*; do
+  [ -e "$filename" ] || continue
+  # echo ${filename##*/}
+  echo "wall$i.png"
+  mv ${filename##*/} "wall$i.png"
+  i=$((i+1))
+done
