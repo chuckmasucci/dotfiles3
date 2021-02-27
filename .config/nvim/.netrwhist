@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/chuck/.config/tmuxp'
+let g:netrw_dirhist_3='/home/chuck/Projects/forgerock/huckops/config/7.0/idm-only/idm/conf'
+let g:netrw_dirhist_2='/home/chuck/Projects/personal/recipes/extension'
+let g:netrw_dirhist_1='/home/chuck/.config'
+let g:netrw_dirhist_0='/home/chuck/.config/rofi'
+let g:netrw_dirhist_9='/home/chuck/Downloads'
+let g:netrw_dirhist_8='/home/chuck/Projects/forgerock/huckops/docker'
+let g:netrw_dirhist_7='/home/chuck/.config/mpv'
+let g:netrw_dirhist_6='/home/chuck/Projects/smithco'
+let g:netrw_dirhist_5='/'
