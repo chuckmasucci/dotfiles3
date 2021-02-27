@@ -40,8 +40,8 @@ font pango:monospace 8
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # background color
-exec_always --no-startup-id hsetroot -solid "#000000"
-exec_always --no-startup-id feh --bg-fill ~/Wallpaper/abstract01.png
+#exec_always --no-startup-id hsetroot -solid "#000000"
+#exec_always --no-startup-id feh --bg-fill ~/Wallpaper/abstract01.png
 
 # picom
 exec_always --no-startup-id "killall -q picom; picom"
@@ -52,35 +52,45 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 # barrier
 exec_always --no-startup-id "killall -q barrier && barrier"
 
+# udiskie
+exec_always --no-startup-id "udiskie -t -n -a"
+
 # redshift
-exec_always --no-startup-id "killall -q redshift-grk && redshift-gtk"
+exec --no-startup-id "redshift"
 
 # keymap
-exec --no-startup-id "/home/chuck/.local/scripts/keymap.sh"
+# exec --no-startup-id "/home/chuck/.local/scripts/keymap.sh"
 
 # screenshot
 bindsym --release $mod+Shift+Print exec --no-startup-id "maim -s | tee /home/chuck/Documents/$(date '+%d-%m-%Y--%R:%S').png | xclip -t image/png -selection clipboard"
 
 # feh
-exec --no-startup-id feh --bg-fill abstract01.png
+# exec --no-startup-id feh --bg-fill $HOME/Wallpaper/usp9zqgo9nz51.png
+exec --no-startup-id ~/Wallpaper/update-wallpaper.sh
+
+# polkit
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Use pactl to adjust volume in PulseAudio.
-bindsym Control+Shift+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
-bindsym Control+Shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
-bindsym Control+Shift+XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym Control+Shift+XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Media player controls
-bindsym Control+Shift+XF86AudioPlay exec playerctl play-pause
-bindsym Control+Shift+XF86AudioPause exec playerctl play-pause
-bindsym Control+Shift+XF86AudioNext exec playerctl next
-bindsym Control+Shift+XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec alacritty
+
+# switch audio outputs speakers/headphones
+bindsym $mod+o exec --no-startup-id $HOME/.local/scripts/audoswitch.sh
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -102,10 +112,19 @@ bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+Tab workspace back_and_forth
 
 # change focus
-bindsym $mod+h focus left
+# bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
+bindsym $mod+h focus left
 bindsym $mod+l focus right
+# bindsym $mod+h exec --no-startup-id ~/Downloads/i3_tmux_vim_focus left &> /tmp/out
+# bindsym $mod+l exec --no-startup-id ~/Downloads/i3_tmux_vim_focus right &> /tmp/out
+# bindsym $mod+l exec --no-startup-id xdotool key --clearmodifiers Escape+control+l &> /tmp/out
+
+# bindsym Control+h focus left
+# bindsym Control+j focus down
+# bindsym Control+k focus up
+# bindsym Control+l focus right
 
 # move focused window
 bindsym $mod+Shift+h move left 400px
@@ -123,15 +142,13 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # rofi
-bindsym $mod+grave exec "rofi -show drun -show-icons -drun-icon-theme Vertex-Maia -theme sidetab
+# bindsym $mod+grave exec "rofi -show drun -show-icons -drun-icon-theme Vertex-Maia -theme slate
+bindsym $mod+grave exec ~/.config/rofi/bin/launcher_misc
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+# bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
+# bindsym $mod+e layout toggle split
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -179,6 +196,7 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
+for_window [class="Google-chrome"] border pixel 2
 # floating windows
 for_window [window_type="notification"] floating enable
 for_window [class="Shutter" instance="shutter"] floating enable
@@ -190,13 +208,15 @@ for_window [class="Steam" title="Steam - News.*"] floating enable
 for_window [class="Steam" title="Friends List"] floating enable
 for_window [class="Google-chrome" instance="crx_nckgahadagoaajjgafhacjanaoiihapd"] floating enable
 for_window [window_role="pop-up"] floating enable
+for_window [id=111149061 title="Android Emulator - Pixel_3_XL_API_30:5554"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "~/.config/rofi/bin/powermenu"
 
 mode "resize" {
         bindsym h resize shrink width 10 px or 10 ppt
@@ -210,8 +230,13 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bindsym $mod+C move container absolute position center
-bindsym $mod+Shift+M resize set 1720 1200; move container absolute position center
+bindsym $mod+Shift+space floating toggle; resize set 1720 1200; move container absolute position center
+# bindsym $mod+Shift+space floating toggle
+
 bindsym $mod+shift+F resize set 2000
 
 bar {}
 
+set $color_dir $HOME/.config/alacritty/colors
+bindsym $mod+Shift+n exec alacritty-colorscheme -C $color_dir -T && exec notify-send "Alacritty Colorscheme" `alacritty-colorscheme -C $color_dir -s`
+#bindsym $mod+Shift+b exec notify-send "Alacritty Colorscheme" `alacritty-colorscheme -C $color_dir -s`

@@ -22,7 +22,7 @@ set relativenumber
 set shiftwidth=0
 set shortmess+=c
 set showcmd
-set signcolumn=yes
+set signcolumn=yes:2
 set smartcase
 set splitright
 set tabstop=2
@@ -38,8 +38,12 @@ set wrap!
 set wildignore+=**/node_modules/** 
 set updatetime=300
 set timeoutlen=300
+set ttimeoutlen=10
+set iskeyword-=_
 filetype plugin indent on
 let mapleader = '\'
+set cursorline
+nnoremap <silent> H :set cursorline!<CR>
 
 " Key mappings
 nnoremap G Gzz
@@ -60,8 +64,8 @@ nnoremap <C-o> <C-o>zz
 nnoremap <silent> <Leader>s :vsp<cr>
 inoremap <F1> <Esc>
 noremap <F1> :call MapF1()<CR>
-nnoremap <C-d> <C-d>zz
-nnoremap <C-u> <C-u>zz
+" nnoremap <C-d> <C-d>zz
+" nnoremap <C-u> <C-u>zz
 
 " Functions
 function! MapF1()
@@ -71,86 +75,6 @@ function! MapF1()
     exec 'help'
   endif
 endfunction
-
-" Statusline
-if filereadable(expand("~/.config/nvim/statusline.vim"))
-  source ~/.config/nvim/statusline.vim
- endif
-
-" Plugins
-if filereadable(expand("~/.config/nvim/plugins.vim"))
-  source ~/.config/nvim/plugins.vim
- endif
-
-" Colorscheme
-if filereadable(expand("~/.config/nvim/colorscheme.vim"))
-  source ~/.config/nvim/colorscheme.vim
- endif
-
-" vim-grepper
-if filereadable(expand("~/.config/nvim/configs/vim-grepper.vim"))
-  source ~/.config/nvim/configs/vim-grepper.vim
- endif
-
-" nerdtree
-if filereadable(expand("~/.config/nvim/configs/needtree.vim"))
-  source ~/.config/nvim/configs/needtree.vim
- endif
-
-" coc.nvim
-if filereadable(expand("~/.config/nvim/configs/coc.vim"))
-  source ~/.config/nvim/configs/coc.vim
- endif
-
-" vim-jsx-pretty
-if filereadable(expand("~/.config/nvim/configs/vim-jsx-pretty.vim"))
-  source ~/.config/nvim/configs/vim-jsx-pretty.vim
- endif
-
-" fuzzysearch
-if filereadable(expand("~/.config/nvim/configs/fuzzysearch.vim"))
-  source ~/.config/nvim/configs/fuzzysearch.vim
- endif
-
-" vim-buftabline
-if filereadable(expand("~/.config/nvim/configs/vim-buftabline.vim"))
-  source ~/.config/nvim/configs/vim-buftabline.vim
- endif
-
-" vim-prettuer
-" if filereadable(expand("~/.config/nvim/configs/vim-prettier.vim"))
-"   source ~/.config/nvim/configs/vim-prettier.vim
-"  endif
-
-" vim-prettuer
-if filereadable(expand("~/.config/nvim/configs/vim-devicons.vim"))
-  source ~/.config/nvim/configs/vim-devicons.vim
- endif
-
-" vim-prettuer
-if filereadable(expand("~/.config/nvim/configs/vim-tmux-navigator.vim"))
-  source ~/.config/nvim/configs/vim-tmux-navigator.vim
- endif
- 
-" vim-prettuer
-if filereadable(expand("~/.config/nvim/configs/git-blame.vim"))
-  source ~/.config/nvim/configs/git-blame.vim
- endif
-
-" beacon.nvim
-if filereadable(expand("~/.config/nvim/configs/beacon.vim"))
-  source ~/.config/nvim/configs/beacon.vim
- endif
-
-" vim-gitgutter
-if filereadable(expand("~/.config/nvim/configs/vim-gitgutter.vim"))
-  source ~/.config/nvim/configs/vim-gitgutter.vim
- endif
-
-" vimspector
-if filereadable(expand("~/.config/nvim/configs/vimspector.vim"))
-  source ~/.config/nvim/configs/vimspector.vim
- endif
 
 " Folding
 set foldmethod=indent
@@ -162,3 +86,14 @@ augroup remember_folds
   autocmd BufWrite * mkview
   autocmd BufRead * silent! loadview
 augroup END
+
+augroup remember_marks
+  autocmd!
+  autocmd BufWrite * MarkSave
+  autocmd BufRead * silent! MarkLoad
+augroup END
+
+" Plugins
+if filereadable(expand("~/.config/nvim/plugins.vim"))
+  source ~/.config/nvim/plugins.vim
+ endif

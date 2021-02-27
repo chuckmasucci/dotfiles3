@@ -1,4 +1,4 @@
 let g:gitgutter_highlight_linenrs = 1
-" nmap <leader>g <Plug>(GitGutterNextHunk)
-" nmap <leader>h <Plug>(GitGutterPrevHunk)
+nmap <leader>gh <Plug>(GitGutterNextHunk)
+nmap <leader>gp <Plug>(GitGutterPrevHunk)
 

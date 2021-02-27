@@ -1,9 +1,13 @@
-export ZSH="/home/chuck/.oh-my-zsh"
-export KEYTIMEOUT=1
+source ~/.bash_profile
 
-ZSH_THEME="avit"
-ENABLE_CORRECTION="false"
-QT_QPA_PLATFORMTHEME="gtk2"
+export ARCHFLAGS="-arch x86_64"
+export DESKTOP_SESSION="i3"
+export EDITOR='nvim'
+export ENABLE_CORRECTION="false"
+export KEYTIMEOUT=1
+export QT_QPA_PLATFORMTHEME="gtk2"
+export ZSH="/home/chuck/.oh-my-zsh"
+export ZSH_THEME="avit"
 
 path+=('/home/chuck/.local/bin')
 path+=('/home/chuck/.local/scripts')
@@ -14,33 +18,24 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 # Key bindings
-bindkey "^P" up-line-or-search
-bindkey "^N" down-line-or-search
+bindkey "^P" up-line-or-beginning-search
+bindkey "^N" down-line-or-beginning-search
 bindkey '\e[A' history-beginning-search-backward
 bindkey '\e[B' history-beginning-search-forward
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nvim'
-else
-  export EDITOR='nvim'
-fi
-
-# Compilation flags
-export ARCHFLAGS="-arch x86_64"
-
 # Aliases
-alias i3config="$EDITOR ~/.config/i3/config"
-alias picomconfig="$EDITOR ~/.config/picom/picom.conf"
-alias nvimconfig="cd ~/.config/nvim/ && $EDITOR"
-alias zshconfig="$EDITOR ~/.zshrc"
-alias tmuxconfig="$EDITOR ~/.tmux.conf.local"
-alias polyconfig="$EDITOR ~/.config/polybar/config.ini"
-alias alacrittyconfig="$EDITOR ~/.config/alacritty/alacritty.yml"
 alias fr="cd ~/Projects/forgerock"
-alias dy="tmuxinator start dy"
 alias vimdiff='nvim -d'
 alias vim='nvim'
+
+# Config aliases
+alias alacrittyconfig="$EDITOR ~/.config/alacritty/alacritty.yml"
+alias i3config="$EDITOR ~/.config/i3/config"
+alias nvimconfig="cd ~/.config/nvim/ && $EDITOR"
+alias picomconfig="$EDITOR ~/.config/picom/picom.conf"
+alias polyconfig="$EDITOR ~/.config/polybar/config.ini"
+alias tmuxconfig="$EDITOR ~/.tmux.conf.local"
+alias zshconfig="$EDITOR ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # NVM
@@ -51,12 +46,6 @@ export NVM_DIR="$HOME/.nvm"
 # YVM
 export YVM_DIR=/home/chuck/.yvm
 [ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
-
-# Base 16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 # Vi mode
 function zle-keymap-select zle-line-init
@@ -94,3 +83,22 @@ zle -N zle-keymap-select
 # jEnv
 export PATH="$HOME/.jenv/bin:$PATH"
 if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+
+# ripgrep
+if type rg &> /dev/null; then
+  export FZF_DEFAULT_COMMAND='rg --files'
+  export FZF_DEFAULT_OPTS='-m --height 50% --border'
+fi
+
+# android studio
+export ANDROID_ROOT="$home/Android"
+export PATH="$HOME/Android/Sdk/emulator:$PATH"
+export PATH="$HOME/Android/Sdk/tools:$PATH"
+
+# opam configuration
+test -r /home/chuck/.opam/opam-init/init.zsh && . /home/chuck/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# fzf
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+source /home/chuck/.config/fzf/git.zsh

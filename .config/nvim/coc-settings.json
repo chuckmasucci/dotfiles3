@@ -1,14 +1,4 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": [
-    "css",
-    "html",
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "markdown",
-    "reason",
-    "scss"
-  ],
   "coc.preferences.hoverTarget": "preview",
   "css.validate": false,
   "diagnostic.refreshOnInsertMode": false,
@@ -29,13 +19,12 @@
   "eslint.packageManager": "yarn",
   "javascript.suggestionActions.enabled": false,
   "languageserver": {
-    "reason": {
-      "command": "reason-language-server",
-      "filetypes": ["reason"]
+    "ocaml-lsp": {
+      "command": "opam",
+      "args": ["config", "exec", "--", "ocamllsp"],
+      "filetypes": ["ocaml", "reason"]
     }
   },
-  "less.validate": false,
-  "prettier.requireConfig": true,
   "scss.validate": false,
   "stylelintplus.autoFixOnSave": true,
   "suggest.snippetIndicator": " ",

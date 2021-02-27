@@ -48,9 +48,9 @@ endfunction
 nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
+"
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
@@ -134,6 +134,17 @@ let g:LanguageClient_serverCommands = {
 nnoremap <silent> <leader>h :call CocActionAsync('doHover')<cr>
 
 
- map <silent> <F2> :CocCommand explorer<CR>
-let g:coc_global_extensions = ['coc-stylelintplus']
-let g:coc_global_extensions = ['coc-prettier']
+map <F2> :CocCommand explorer<CR>
+let g:coc_global_extensions = [
+      \ 'coc-stylelintplus', 
+      \ 'coc-tsserver',
+      \ 'coc-vetur', 
+      \ 'coc-snippets', 
+      \ 'coc-json', 
+      \ 'coc-jest', 
+      \ 'coc-html', 
+      \ 'coc-eslint', 
+      \ 'coc-emmet', 
+      \ 'coc-css']
+
+" let g:coc_global_extensions = ['coc-prettier']
