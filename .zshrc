@@ -102,3 +102,6 @@ test -r /home/chuck/.opam/opam-init/init.zsh && . /home/chuck/.opam/opam-init/in
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 # source /home/chuck/.config/fzf/git.zsh
+
+# systemd
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
