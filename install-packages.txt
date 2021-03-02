@@ -25,6 +25,7 @@ maim
 mpv
 nerd-fonts-bitstream-vera-mono
 nerd-fonts-fira-mono
+nerd-fonts-fira-code
 networkmanager
 neovim-nightly
 noto-fonts-emoji
@@ -37,6 +38,7 @@ picom
 polybar
 pulseaudio
 pulseaudio-alsa
+pulseaudio-control
 python
 python-dbus
 python-pip
@@ -48,6 +50,7 @@ redshift
 refind
 ripgrep
 rofi
+ruby
 simplescreenrecorder
 spotify
 slack-desktop
