@@ -101,4 +101,4 @@ test -r /home/chuck/.opam/opam-init/init.zsh && . /home/chuck/.opam/opam-init/in
 # fzf
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
-source /home/chuck/.config/fzf/git.zsh
+# source /home/chuck/.config/fzf/git.zsh

@@ -4,7 +4,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-peekaboo'
 
 " marks
-Plug 'inkarkat/vim-mark'
+" Plug 'inkarkat/vim-mark'
 Plug 'inkarkat/vim-ingo-library'
 Plug 'kshenoy/vim-signature'
 
@@ -67,7 +67,7 @@ Plug 'puremourning/vimspector'
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tomtom/tcomment_vim'
-Plug 'wfxr/minimap.vim'
+" Plug 'wfxr/minimap.vim'
 
 " colorschemes
 Plug 'aonemd/kuroi.vim'

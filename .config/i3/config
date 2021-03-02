@@ -53,7 +53,7 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id "killall -q barrier && barrier"
 
 # udiskie
-exec_always --no-startup-id "udiskie -t -n -a"
+exec --no-startup-id "udiskie -t -n -a"
 
 # redshift
 exec --no-startup-id "redshift"

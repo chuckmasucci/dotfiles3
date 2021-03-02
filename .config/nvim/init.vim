@@ -87,11 +87,11 @@ augroup remember_folds
   autocmd BufRead * silent! loadview
 augroup END
 
-augroup remember_marks
-  autocmd!
-  autocmd BufWrite * MarkSave
-  autocmd BufRead * silent! MarkLoad
-augroup END
+" augroup remember_marks
+"   autocmd!
+"   autocmd BufWrite * MarkSave
+"   autocmd BufRead * silent! MarkLoad
+" augroup END
 
 " Plugins
 if filereadable(expand("~/.config/nvim/plugins.vim"))

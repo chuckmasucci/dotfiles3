@@ -20,6 +20,8 @@ hsetroot
 htop
 jq
 libnotify
+lightdm
+lightdm-webkit2-greeter
 lxappearance
 maim
 mpv
@@ -51,6 +53,7 @@ refind
 ripgrep
 rofi
 ruby
+rxvt-unicode
 simplescreenrecorder
 spotify
 slack-desktop
@@ -65,6 +68,7 @@ ttf-dejavu-sans-code
 ttf-noto-fonts-simple ttf-roboto
 udiskie
 unzip
+vimix-gtk-theme
 xcape
 xclip
 xcursor-openzone
