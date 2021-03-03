@@ -137,6 +137,7 @@ nnoremap <silent> <leader>h :call CocActionAsync('doHover')<cr>
 map <F2> :CocCommand explorer<CR>
 let g:coc_global_extensions = [
       \ 'coc-stylelintplus', 
+      \ 'coc-explorer', 
       \ 'coc-tsserver',
       \ 'coc-vetur', 
       \ 'coc-snippets', 
