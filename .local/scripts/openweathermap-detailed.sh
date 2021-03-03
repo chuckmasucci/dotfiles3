@@ -2,22 +2,22 @@
 
 get_icon() {
     case $1 in
-        01d) icon="";;
-        01n) icon="";;
-        02d) icon="";;
-        02n) icon="";;
-        03*) icon="";;
-        04*) icon="";;
-        09d) icon="";;
-        09n) icon="";;
-        10d) icon="";;
-        10n) icon="";;
-        11d) icon="";;
-        11n) icon="";;
-        13d) icon="";;
-        13n) icon="";;
-        50d) icon="";;
-        50n) icon="";;
+        01d) icon="滛";;
+        01n) icon="";;
+        02d) icon="杖";;
+        02n) icon="";;
+        03*) icon="摒";;
+        04*) icon="摒";;
+        09d) icon="";;
+        09n) icon="";;
+        10d) icon="";;
+        10n) icon="";;
+        11d) icon="";;
+        11n) icon="";;
+        13d) icon="流";;
+        13n) icon="";;
+        50d) icon="敖";;
+        50n) icon="敖";;
         *) icon="";
     esac
 

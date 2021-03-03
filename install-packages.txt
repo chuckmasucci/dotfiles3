@@ -1,4 +1,5 @@
 alacritty
+alsa-utils
 barrier
 base-devel
 bat
@@ -60,9 +61,11 @@ slack-desktop
 sudo
 tmux
 ttf-weather-icons
-ttf-nunito-sans ttf-nunito
+ttf-nunito-sans
+ttf-nunito
 ttf-opensans
-ttf-opensans ttf-lato
+ttf-opensans
+ttf-lato
 ttf-dejavu
 ttf-dejavu-sans-code
 ttf-noto-fonts-simple ttf-roboto
