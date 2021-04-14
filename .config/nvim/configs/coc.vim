@@ -32,6 +32,7 @@ nmap <silent> gd <Plug>(coc-definition) zz
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> tt <Plug>(coc-fix-current)
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>

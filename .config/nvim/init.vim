@@ -5,7 +5,7 @@ set clipboard=unnamedplus
 set completeopt-=preview
 set cmdheight=2
 set expandtab
-set guifont=FuraCode\ Nerd\ Font:11
+set guifont=Fira\ Code\ Regular\ Nerd\ Font\ Complete\ Mono:11
 set hidden
 set ignorecase
 set laststatus=2
@@ -53,8 +53,6 @@ nnoremap <silent> <Leader>b :BW<cr>
 nnoremap <silent> <Leader><Leader>b :bufdo bwipeout<cr>
 nnoremap <silent> <Leader>q :q<cr>
 nnoremap <silent> <Leader><Leader>q :q!<cr>
-nnoremap <silent> <C-N> :bnext<CR>
-nnoremap <silent> <C-A-N> :bprev<CR>
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
 nnoremap <leader>o <C-W>o<CR>
@@ -97,3 +95,5 @@ augroup END
 if filereadable(expand("~/.config/nvim/plugins.vim"))
   source ~/.config/nvim/plugins.vim
  endif
+
+lua require"bufferline".setup{}

@@ -87,7 +87,7 @@ bindsym XF86AudioPrev exec playerctl previous
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 
 # switch audio outputs speakers/headphones
 bindsym $mod+o exec --no-startup-id $HOME/.local/scripts/audoswitch.sh
@@ -107,6 +107,9 @@ bindsym $mod+minus scratchpad show
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# i3 balance windows
+bindsym $mod+Shift+b exec "i3_balance_workspace"
 
 # switch between the current and the previously focused one
 bindsym $mod+Tab workspace back_and_forth
@@ -240,3 +243,8 @@ bar {}
 set $color_dir $HOME/.config/alacritty/colors
 bindsym $mod+Shift+n exec alacritty-colorscheme -C $color_dir -T && exec notify-send "Alacritty Colorscheme" `alacritty-colorscheme -C $color_dir -s`
 #bindsym $mod+Shift+b exec notify-send "Alacritty Colorscheme" `alacritty-colorscheme -C $color_dir -s`
+
+# Dropdown terminal
+exec_always --no-startup-id "alacritty --class dropdown"
+bindsym $mod+i [instance="dropdown"] scratchpad show, move absolute position 1000px 0px, border pixel 0
+for_window [instance="dropdown"] floating enable, resize set 1440 400, move scratchpad

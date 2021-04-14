@@ -7,7 +7,9 @@ export ENABLE_CORRECTION="false"
 export KEYTIMEOUT=1
 export QT_QPA_PLATFORMTHEME="gtk2"
 export ZSH="/home/chuck/.oh-my-zsh"
-export ZSH_THEME="avit"
+export ZSH_THEME="oxide"
+export JAVA_HOME="/usr/lib/jvm/java-11-openjdk/"
+# source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 
 path+=('/home/chuck/.local/bin')
 path+=('/home/chuck/.local/scripts')
@@ -25,6 +27,9 @@ bindkey '\e[B' history-beginning-search-forward
 
 # Aliases
 alias fr="cd ~/Projects/forgerock"
+alias forgeops="cd ~/Projects/forgerock/forgeops && ./startMinikubeSkaffold.sh -n -d kvm2"
+alias platform-run="cd ~/Projects/forgerock/platform-ui && ./startSkaffold.sh"
+alias platform-edit="cd ~/Projects/forgerock/platform-ui/packages && nvim"
 alias vimdiff='nvim -d'
 alias vim='nvim'
 
@@ -48,33 +53,33 @@ export YVM_DIR=/home/chuck/.yvm
 [ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
 
 # Vi mode
-function zle-keymap-select zle-line-init
+function zle-keymap-select zle-line-init zle-line-finish
 {
     # change cursor shape
-    if [[ -n "$TMUX" ]]; then  # tmux
+    # if [[ -n "$TMUX" ]]; then  # tmux
       case $KEYMAP in
           vicmd)      print -n '\033[0 q';; # block cursor
           viins|main) print -n '\033[6 q';; # line cursor
       esac
-    else # iTerm2
-      case $KEYMAP in 
-          vicmd)      print -n -- "\E]50;CursorShape=0\C-G";;  # block cursor
-          viins|main) print -n -- "\E]50;CursorShape=1\C-G";;  # line cursor
-      esac
-    fi
+    # else # iTerm2
+    #   case $KEYMAP in 
+    #       vicmd)      print -n -- "\E]50;CursorShape=0\C-G";;  # block cursor
+    #       viins|main) print -n -- "\E]50;CursorShape=1\C-G";;  # line cursor
+    #   esac
+    # fi
 
-    zle reset-prompt
-    zle -R
+    # zle reset-prompt
+    # zle -R
 }
 
-function zle-line-finish
-{
-    if [[ -n "$TMUX" ]]; then # tmux
-      print -n -- '\033[0 q'  # block cursor
-    else # iTerm2
-      print -n -- "\E]50;CursorShape=0\C-G"  # block cursor
-    fi
-  }
+# function zle-line-finish
+# {
+#     if [[ -n "$TMUX" ]]; then # tmux
+#       print -n -- '\033[0 q'  # block cursor
+#     else # iTerm2
+#       print -n -- "\E]50;CursorShape=0\C-G"  # block cursor
+#     fi
+#   }
 
 zle -N zle-line-init
 zle -N zle-line-finish

@@ -1,5 +1,8 @@
 {
-  "coc.preferences.hoverTarget": "preview",
+  "coc.source.around.enable": false,
+  "coc.source.buffer.enable": false,
+  "coc.source.file.enable": false,
+  "coc.source.file.disableSyntaxes": ["string"],
   "css.validate": false,
   "diagnostic.refreshOnInsertMode": false,
   "explorer.icon.enableNerdfont": true,
@@ -8,16 +11,9 @@
   "explorer.width": 50,
   "explorer.toggle": true,
   "eslint.autoFixOnSave": true,
-  "eslint.autoFix": true,
-  "eslint.filetypes": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "vue"
-  ],
   "eslint.packageManager": "yarn",
-  "javascript.suggestionActions.enabled": false,
+  "javascript.suggestionActions.enabled": true,
+  "json.format.enable": true,
   "languageserver": {
     "ocaml-lsp": {
       "command": "opam",
@@ -33,8 +29,10 @@
   "tsserver.enable": true,
   "tsserver.log": "verbose",
   "tsserver.npm": "/home/chuck/.nvm/versions/node/v10.15.0/bin/npm",
+  "tsserver.trace.server": "verbose",
   "typescript.preferences.quoteStyle": "single",
   "typescript.suggest.autoImports": true,
   "vetur.experimental.templateInterpolationService": false,
+  "vetur.ignoreProjectWarning": true,
   "wxss.validate": false
 }
