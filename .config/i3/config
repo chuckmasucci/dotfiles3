@@ -1,3 +1,4 @@
+set $mod Mod
 set $mod Mod4
 
 gaps inner 20
@@ -71,6 +72,7 @@ exec --no-startup-id ~/Wallpaper/update-wallpaper.sh
 # polkit
 exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
+
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
@@ -86,6 +88,9 @@ bindsym XF86AudioPrev exec playerctl previous
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# Chrome tabs
+exec_always --no-startup-id ~/.i3/i3-chrome-tab-dragging.py
+
 # start a terminal
 bindsym $mod+Return exec kitty
 
@@ -95,17 +100,28 @@ bindsym $mod+o exec --no-startup-id $HOME/.local/scripts/audoswitch.sh
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# open chrome
+bindsym $mod+w exec --no-startup-id google-chrome-stable --profile-directory=Default
+
+# open ranger
+bindsym $mod+e exec --no-startup-id kitty ranger
+
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
 
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
 
+# Google Chat
+bindsym $mod+C exec --no-startup-id gtk-launch chrome-chfbpgnooceecdoohagngmjnndbbaeip-Default 
+
+# Google Messages
+bindsym $mod+M exec --no-startup-id gtk-launch chrome-hpfldicfbfomlpcikngkocigghgafkph-Default.desktop
+
+# Dunst
+bindsym Control+Shift+space exec --no-startup-id dunstctl close-all
+
 # start dmenu (a program launcher)
-# bindsym $mod+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # i3 balance windows
@@ -115,19 +131,10 @@ bindsym $mod+Shift+b exec "i3_balance_workspace"
 bindsym $mod+Tab workspace back_and_forth
 
 # change focus
-# bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+h focus left
 bindsym $mod+l focus right
-# bindsym $mod+h exec --no-startup-id ~/Downloads/i3_tmux_vim_focus left &> /tmp/out
-# bindsym $mod+l exec --no-startup-id ~/Downloads/i3_tmux_vim_focus right &> /tmp/out
-# bindsym $mod+l exec --no-startup-id xdotool key --clearmodifiers Escape+control+l &> /tmp/out
-
-# bindsym Control+h focus left
-# bindsym Control+j focus down
-# bindsym Control+k focus up
-# bindsym Control+l focus right
 
 # move focused window
 bindsym $mod+Shift+h move left 400px
@@ -146,7 +153,7 @@ bindsym $mod+f fullscreen toggle
 
 # rofi
 # bindsym $mod+grave exec "rofi -show drun -show-icons -drun-icon-theme Vertex-Maia -theme slate
-bindsym $mod+grave exec ~/.config/rofi/bin/launcher_misc
+bindsym $mod+space exec ~/.config/rofi/bin/launcher_misc
 
 # change container layout (stacked, tabbed, toggle split)
 # bindsym $mod+s layout stacking
@@ -154,7 +161,7 @@ bindsym $mod+grave exec ~/.config/rofi/bin/launcher_misc
 # bindsym $mod+e layout toggle split
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -210,8 +217,10 @@ for_window [class="Cawbird"] floating enable
 for_window [class="Steam" title="Steam - News.*"] floating enable
 for_window [class="Steam" title="Friends List"] floating enable
 for_window [class="Google-chrome" instance="crx_nckgahadagoaajjgafhacjanaoiihapd"] floating enable
+for_window [class="Google-chrome" instance="crx_hpfldicfbfomlpcikngkocigghgafkph"] border pixel 0
 for_window [window_role="pop-up"] floating enable
 for_window [id=111149061 title="Android Emulator - Pixel_3_XL_API_30:5554"] floating enable
+for_window [class="awakened-poe-trade"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -222,29 +231,29 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "~/.config/rofi/bin/powermenu"
 
 mode "resize" {
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 1 px or 1 ppt
+        bindsym j resize grow height 1 px or 1 ppt
+        bindsym k resize shrink height 1 px or 1 ppt
+        bindsym l resize grow width 1 px or 1 ppt
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
 bindsym $mod+r mode "resize"
 
-bindsym $mod+C move container absolute position center
-bindsym $mod+Shift+space floating toggle; resize set 1720 1200; move container absolute position center
+bindsym $mod+B resize set 2560 1280; move container absolute position center
+bindsym $mod+Shift+space floating toggle; resize set 1920 1300; move container absolute position center
 # bindsym $mod+Shift+space floating toggle
 
 bindsym $mod+shift+F resize set 2000
 
 bar {}
 
-set $color_dir $HOME/.config/alacritty/colors
-bindsym $mod+Shift+n exec alacritty-colorscheme -C $color_dir -T && exec notify-send "Alacritty Colorscheme" `alacritty-colorscheme -C $color_dir -s`
-#bindsym $mod+Shift+b exec notify-send "Alacritty Colorscheme" `alacritty-colorscheme -C $color_dir -s`
-
 # Dropdown terminal
-exec_always --no-startup-id "alacritty --class dropdown"
-bindsym $mod+i [instance="dropdown"] scratchpad show, move absolute position 1000px 0px, border pixel 0
-for_window [instance="dropdown"] floating enable, resize set 1440 400, move scratchpad
+bindsym $mod+i exec --no-startup-id "kitty --class dropdown"
+for_window [instance="dropdown"] floating enable, resize set 1440 400, move absolute position 1000px 35px
+# exec_always --no-startup-id "kitty --class dropdown"
+# bindsym $mod+i [instance="dropdown"] scratchpad show move absolute position 1000px 0px, border pixel 0
+# for_window [instance="dropdown"] floating enable, resize set 1440 400, move scratchpad
+
+bindsym $mod+Shift+v exec ~/.vim-anywhere/bin/run

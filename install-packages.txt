@@ -26,9 +26,11 @@ lightdm-webkit2-greeter
 lxappearance
 maim
 mpv
-nerd-fonts-bitstream-vera-mono
-nerd-fonts-fira-mono
-nerd-fonts-fira-code
+nerd-fonts-bitstream-vera-mono 2.1.0-1
+nerd-fonts-fira-code 2.1.0-2
+nerd-fonts-fira-mono 2.1.0-2
+nerd-fonts-hack 2.1.0-3
+nerd-fonts-ubuntu-mono 2.1.0-2
 networkmanager
 neovim-nightly
 noto-fonts-emoji

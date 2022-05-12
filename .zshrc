@@ -8,7 +8,8 @@ export KEYTIMEOUT=1
 export QT_QPA_PLATFORMTHEME="gtk2"
 export ZSH="/home/chuck/.oh-my-zsh"
 export ZSH_THEME="oxide"
-export JAVA_HOME="/usr/lib/jvm/java-11-openjdk/"
+export XDG_DATA_HOME="$HOME/.local/share"
+# export JAVA_HOME="/usr/lib/jvm/java-8-openjdk/"
 # source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 
 path+=('/home/chuck/.local/bin')
@@ -27,16 +28,20 @@ bindkey '\e[B' history-beginning-search-forward
 
 # Aliases
 alias fr="cd ~/Projects/forgerock"
-alias forgeops="cd ~/Projects/forgerock/forgeops && ./startMinikubeSkaffold.sh -n -d kvm2"
-alias platform-run="cd ~/Projects/forgerock/platform-ui && ./startSkaffold.sh"
-alias platform-edit="cd ~/Projects/forgerock/platform-ui/packages && nvim"
+alias forgeops="cd ~/Projects/forgerock/huckops && ./startMinikubeSkaffold.sh -n -d kvm2"
+alias pui="cd ~/Projects/forgerock/platform-ui"
+#alias pr="cd ~/Projects/forgerock/platform-ui && ./startSkaffold.sh"
+#alias pe="cd ~/Projects/forgerock/platform-ui/packages && nvim"
 alias vimdiff='nvim -d'
+# alias nvim='lvim'
 alias vim='nvim'
+alias xclip="xclip -selection c"
+alias amadmin="~/Projects/forgerock/forgeops/bin/print-secrets amadmin | xclip"
 
 # Config aliases
 alias alacrittyconfig="$EDITOR ~/.config/alacritty/alacritty.yml"
-alias i3config="$EDITOR ~/.config/i3/config"
-alias nvimconfig="cd ~/.config/nvim/ && $EDITOR"
+alias i3config="$EDITOR ~/.config/i3/i3.config"
+alias nvimconfig="cd ~/.config/lvim/ && $EDITOR config.lua"
 alias picomconfig="$EDITOR ~/.config/picom/picom.conf"
 alias polyconfig="$EDITOR ~/.config/polybar/config.ini"
 alias tmuxconfig="$EDITOR ~/.tmux.conf.local"
@@ -53,41 +58,20 @@ export YVM_DIR=/home/chuck/.yvm
 [ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
 
 # Vi mode
-function zle-keymap-select zle-line-init zle-line-finish
-{
-    # change cursor shape
-    # if [[ -n "$TMUX" ]]; then  # tmux
-      case $KEYMAP in
-          vicmd)      print -n '\033[0 q';; # block cursor
-          viins|main) print -n '\033[6 q';; # line cursor
-      esac
-    # else # iTerm2
-    #   case $KEYMAP in 
-    #       vicmd)      print -n -- "\E]50;CursorShape=0\C-G";;  # block cursor
-    #       viins|main) print -n -- "\E]50;CursorShape=1\C-G";;  # line cursor
-    #   esac
-    # fi
-
-    # zle reset-prompt
-    # zle -R
+function zle-keymap-select zle-line-init zle-line-finish {
+  case $KEYMAP in
+      vicmd)      print -n '\033[0 q';; # block cursor
+      viins|main) print -n '\033[6 q';; # line cursor
+  esac
 }
-
-# function zle-line-finish
-# {
-#     if [[ -n "$TMUX" ]]; then # tmux
-#       print -n -- '\033[0 q'  # block cursor
-#     else # iTerm2
-#       print -n -- "\E]50;CursorShape=0\C-G"  # block cursor
-#     fi
-#   }
 
 zle -N zle-line-init
 zle -N zle-line-finish
 zle -N zle-keymap-select
 
 # jEnv
-export PATH="$HOME/.jenv/bin:$PATH"
-if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+# export PATH="$HOME/.jenv/bin:$PATH"
+# if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
 # ripgrep
 if type rg &> /dev/null; then
@@ -110,3 +94,5 @@ source /usr/share/fzf/completion.zsh
 
 # systemd
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+# export PATH="$HOME/.jenv/bin:$PATH"
+# eval "$(jenv init -)"
